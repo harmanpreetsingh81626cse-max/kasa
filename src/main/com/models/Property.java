@@ -39,9 +39,39 @@ public class Property {
         this.listingType = listingType;
         this.price = price;
         this.area = area;
-        this.bathrooms = bathrooms;
+        this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.status = status;
         this.createdAt = createdAt;
+    }
+
+    public void updateDetails(String title, String description, String location, BigDecimal price) {
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.price = price;
+    }
+
+    public int getPropertyId() {
+        return propertyId;
+    }
+
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void changeStatus(PropertyStatus status) {
+        this.status = status;
+    }
+
+    public void displayDetails() {
+        System.out.println("Property: " + title);
+        System.out.println("Location: " + location);
+        System.out.println("Price: " + price);
+        System.out.println("Status: " + status);
     }
 }
