@@ -1,5 +1,6 @@
 import java.time.LocalDateTime;
 import java.util.Scanner;
+import main.com.enums.UserRole;
 
 public abstract class User {
     private int userId;
@@ -7,16 +8,18 @@ public abstract class User {
     private String email;
     private String password;
     private String phone;
-    // private String role; datatype of role should be from interface or enum
+    private UserRole role;
     private LocalDateTime createdAt;
 
-    protected User(int userId, String userName, String email, String password, String phone, LocalDateTime CreatedAt) {
+    protected User(int userId, String userName, String email, String password, String phone, LocalDateTime CreatedAt,
+            UserRole role) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.createdAt = CreatedAt;
+        this.role = role;
 
     }
 
@@ -30,6 +33,10 @@ public abstract class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public UserRole getRole() {
+        return role;
     }
 
     public void updateProfile(String name, String email, String phone) {
@@ -106,7 +113,14 @@ public abstract class User {
         }
     }
 
-    public abstract void displayProfile();
+    public void displayProfile() {
+        System.out.println(this.userName);
+        System.out.println(this.email);
+        System.out.println(this.phone);
+
+    }
+
+    // public abstract void displayDashboard();
     // System.out.println("User Name : " + userName);
     // System.out.println("Phone no : " + phone);
     // System.out.println("Email : "+ email);
