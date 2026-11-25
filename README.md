@@ -40,3 +40,11 @@ Services: Implement business logic.
 UI: Handle user interaction.
 Enums: Define fixed application values.
 Concurrency: Handle simultaneous operations
+
+
+## DAO (data access object)
+1.UserDAO : insert user info to database check where the user belong.
+2.PropertyDAO :  add property data to database.
+3.TransactionDAO : add transaction data to database and check the transaction status.
+4.ReviewDAO : add reviews to database, add rating.
+5.PropertyRequestDAO : add property request to database which user requests for buying.
