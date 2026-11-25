@@ -58,6 +58,55 @@ public class Property {
         return propertyId;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getCity() {
+        return city;
+
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getPincode() {
+        return pincode;
+    }
+
+    public PropertyType getPropertyType() {
+        return propertyType;
+    }
+
+    public ListingType getListingType() {
+        return listingType;
+    }
+
+    public BigDecimal getArea() {
+        return area;
+    }
+
+    public int getBedrooms() {
+        return bedrooms;
+    }
+
+    public int getBathrooms() {
+        return bathrooms;
+    }
+
+    public PropertyStatus getStatus() {
+        return status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
     public int getOwnerId() {
         return ownerId;
     }
