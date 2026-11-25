@@ -130,7 +130,6 @@ public class PropertyService {
                 ps.setInt(1, propertyId);
                 ps.executeUpdate();
             } catch (SQLIntegrityConstraintViolationException e) {
-                // a request, transaction or review still points at this property
                 throw new PropertyUnavailableException(
                         "Property " + propertyId + " has requests or transactions and cannot be deleted");
             }

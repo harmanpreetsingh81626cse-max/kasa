@@ -15,6 +15,7 @@ import main.com.models.Property;
 
 
 public class AdminPropertyService {
+    
     private final PropertyService propertyService = new PropertyService();
 
     public List<Property> getPendingProperties() throws SQLException {
