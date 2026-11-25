@@ -1,3 +1,5 @@
+package main.com.models;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import main.com.enums.PropertyType;

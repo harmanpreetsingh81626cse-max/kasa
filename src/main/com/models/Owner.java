@@ -1,3 +1,5 @@
+package main.com.models;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -7,9 +9,9 @@ public class Owner extends User {
 
     private boolean identityVerified;
 
-    protected Owner(int id, String name, String email, String phone, String password, LocalDateTime date,
-            boolean verified, UserRole role) {
-        super(id, name, email, password, phone, date, role);
+    public Owner(int id, String name, String email, String phone, String password, LocalDateTime date,
+            boolean verified) {
+        super(id, name, email, password, phone, date, UserRole.OWNER);
 
         this.identityVerified = verified;
 

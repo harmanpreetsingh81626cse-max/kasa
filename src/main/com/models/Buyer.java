@@ -1,3 +1,5 @@
+package main.com.models;
+
 import java.time.LocalDateTime;
 
 import main.com.enums.UserRole;

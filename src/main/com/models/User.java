@@ -1,3 +1,5 @@
+package main.com.models;
+
 import java.time.LocalDateTime;
 import java.util.Scanner;
 import main.com.enums.UserRole;
@@ -37,6 +39,11 @@ public abstract class User {
 
     public UserRole getRole() {
         return role;
+    }
+
+    public String getPhone() {
+        return phone;
+
     }
 
     public void updateProfile(String name, String email, String phone) {
