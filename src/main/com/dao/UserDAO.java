@@ -21,7 +21,7 @@ public class UserDAO {
                 PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getHashPassword());
+            pstmt.setString(3, user.getPasswordHash());
             pstmt.setString(4, user.getPhone());
 
             if (user instanceof Buyer) {
