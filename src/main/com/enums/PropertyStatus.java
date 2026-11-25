@@ -7,5 +7,5 @@ public enum PropertyStatus {
     REJECTED,
     RENTED,
     APPROVED
-
+    
 }

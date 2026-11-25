@@ -1,3 +1,4 @@
+
 package main.com.services;
 
 import java.sql.SQLException;
@@ -26,13 +27,8 @@ public class AuthService {
         String hashedPassword = PasswordUtil.hashPassword(password);
 
         Buyer buyer = new Buyer(
-                0,
-                username,
-                email,
-                hashedPassword,
-                phone,
-                LocalDateTime.now(),
-                address);
+                0, username, email, hashedPassword, phone,
+                LocalDateTime.now(), address);
 
         return userDAO.saveUser(buyer);
     }
@@ -49,13 +45,8 @@ public class AuthService {
         String hashedPassword = PasswordUtil.hashPassword(password);
 
         Owner owner = new Owner(
-                0,
-                username,
-                email,
-                hashedPassword,
-                phone,
-                LocalDateTime.now(),
-                false);
+                0, username, email, phone, hashedPassword,
+                LocalDateTime.now(), false);
 
         return userDAO.saveUser(owner);
     }

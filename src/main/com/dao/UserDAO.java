@@ -1,3 +1,4 @@
+
 package main.com.dao;
 
 import main.com.config.*;
@@ -8,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public class UserDAO {
+
     public int saveUser(User user) throws SQLException {
         String sql = """
                 INSERT INTO users
@@ -19,6 +21,7 @@ public class UserDAO {
         try (
                 Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getPasswordHash());
@@ -27,8 +30,9 @@ public class UserDAO {
             if (user instanceof Buyer) {
                 Buyer buyer = (Buyer) user;
                 pstmt.setString(5, buyer.getAddress());
-            } else {
-                pstmt.setNull(5, java.sql.Types.VARCHAR);
+            } 
+            else {
+                pstmt.setNull(5, Types.VARCHAR);
             }
 
             pstmt.setString(6, user.getRole().name());
@@ -61,6 +65,7 @@ public class UserDAO {
         try (
                 Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, email);
 
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -74,6 +79,7 @@ public class UserDAO {
 
     public boolean emailExists(String email) throws SQLException {
         String sql = "SELECT 1 FROM users WHERE email = ? LIMIT 1";
+
         try (
                 Connection conn = DatabaseConnection.getConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -89,7 +95,7 @@ public class UserDAO {
     private User mapUser(ResultSet rs) throws SQLException {
 
         int userId = rs.getInt("user_id");
-        String username = rs.getString("username");
+        String username = rs.getString("user_name");
         String email = rs.getString("email");
         String passwordHash = rs.getString("password");
         String phone = rs.getString("phone");
@@ -103,39 +109,22 @@ public class UserDAO {
         UserRole role = UserRole.valueOf(rs.getString("role"));
 
         switch (role) {
-
             case BUYER:
                 return new Buyer(
-                        userId,
-                        username,
-                        email,
-                        passwordHash,
-                        phone,
-                        createdAt,
-                        rs.getString("address"));
+                        userId, username, email, passwordHash,
+                        phone, createdAt, rs.getString("address"));
 
             case OWNER:
                 return new Owner(
-                        userId,
-                        username,
-                        email,
-                        passwordHash,
-                        phone,
-                        createdAt,
-                        rs.getBoolean("identity_verified"));
+                        userId, username, email, phone,
+                        passwordHash, createdAt, rs.getBoolean("identity_verified"));
 
             case ADMIN:
                 return new Admin(
-                        userId,
-                        username,
-                        email,
-                        passwordHash,
-                        phone,
-                        createdAt);
+                        userId, username, email, phone, passwordHash, createdAt);
 
             default:
                 throw new SQLException("Invalid user role.");
         }
     }
-
 }
